@@ -19,7 +19,7 @@ const Menu = () => {
           {
            ({isActive}) => 
              (
-               <div className={classNames(" inline-flex relative  p-3  gap-x-3 text-xl group-hover:bg-[#eff3f41a] rounded-full",{
+               <div className={classNames(" inline-flex relative  p-3  gap-x-3 text-xl group-hover: rounded-full",{
                  "font-bold":isActive
            })}>
             {

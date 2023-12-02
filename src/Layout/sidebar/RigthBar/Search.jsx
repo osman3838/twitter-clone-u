@@ -1,11 +1,15 @@
 import { useState } from "react"
-
+import { useRef } from "react"
+import { useClickAway } from "react-use"
 const Search = () => {
     const [query,setQuery] = useState('');
     const [focus,setFocus] = useState('');
-
+    const ref  = useRef();
+    useClickAway(ref, () => {
+     console.log('OUTSIDE CLIxCKED');
+   });
   return (
-    <div className="min-h-[32px] w-full flex items-center h-[53px] mb-3">
+    <div ref={ref} className=" relative min-h-[32px] w-full flex items-center h-[53px] mb-3">
         <label className=" relative  h-[43px] group w-full  rounded-full bg-[#202327] focus-within:bg-black border border-transparent focus-within:border-[#1D9BF0] "> 
         <div className="absolute w-[56px] h-full flex pointer-events-none  justify-center items-center">
 
@@ -19,21 +23,21 @@ const Search = () => {
         </button>
     )
 } 
-{
+
+        </label>
+        {
     focus || query  ?
 
     (
 
     
-<div onClick={() => setFocus(true)} className="absolute justify-center min-h-[100px]  h-[100px] flex items-center shadow-box  top-full w-full max-h-[calc(80vh - 53px)] rounded-lg">
+<div onClick={() => setFocus(true)} className="absolute justify-center min-h-[100px]  h-[100px] flex items-center shadow-box  top-full -translate-y-1 w-full max-h-[calc(80vh - 53px)] rounded-lg">
 <p className="leading-5 px-4"> 
 Kişileri, listeleri veya anahtar kelimeleri aramayı dene
 </p>
 </div>
-) : null
-} 
-        </label>
-        
+) : ""
+}  
         </div>
   )
 }
